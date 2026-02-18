@@ -23,7 +23,7 @@ jobs:
         run: python scripts/generate_chart.py
 
       - name: Upload chart
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: chart
           path: skill_chart.png
