@@ -24,8 +24,12 @@ jobs:
       - name: Run chart generator
         run: python scripts/generate_chart.py
 
-      - name: Upload chart as artifact
-        uses: actions/upload-artifact@4
-        with:
-          name: skill-chart
-          path: skill_chart.png
+      - name: Commit and push chart
+        run: |
+          git config --global user.name "Deepak Singh"
+          git config --global user.email "your-email@example.com"
+          git add skill_chart.png
+          git commit -m "Auto-update skill chart" || echo "No changes to commit"
+          git push
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
